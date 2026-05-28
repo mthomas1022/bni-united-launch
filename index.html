@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BNI United — Launch Day | July 9, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a1f33;
+    --navy:#0d2845;
+    --navy-deep:#081c30;
+    --red:#cf2e2e;
+    --red-deep:#a51f1f;
+    --gold:#c8a04a;
+    --paper:#f6f3ec;
+    --paper-2:#efe9dd;
+    --line:rgba(13,40,69,.14);
+    --shadow:0 24px 60px -24px rgba(8,28,48,.45);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Sora',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    border-bottom:1px solid var(--line);
+    background:rgba(246,243,236,.85);
+    backdrop-filter:blur(10px);
+    position:sticky;top:0;z-index:50;
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-weight:600;font-size:1.25rem;letter-spacing:.3px}
+  .brand .mark{
+    width:38px;height:38px;border-radius:9px;
+    background:linear-gradient(140deg,var(--red),var(--red-deep));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;
+    box-shadow:0 6px 16px -6px rgba(165,31,31,.6);
+  }
+  .topbar .cta{
+    font-size:.82rem;font-weight:600;letter-spacing:.4px;text-transform:uppercase;
+    color:#fff;background:var(--navy);padding:11px 22px;border-radius:8px;text-decoration:none;
+    transition:transform .2s ease,background .2s ease;
+  }
+  .topbar .cta:hover{background:var(--red);transform:translateY(-1px)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(200,160,74,.16), transparent 60%),
+      linear-gradient(160deg,var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:96px 0 120px;
+    overflow:hidden;
+  }
+  .hero:before{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:54px 54px;
+    mask-image:radial-gradient(900px 500px at 70% 30%, #000 0%, transparent 75%);
+  }
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.78rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;
+    color:var(--gold);margin-bottom:24px;
+  }
+  .eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}
+  .wordmark{
+    display:inline-flex;align-items:baseline;gap:.12em;
+    font-family:'Fraunces',serif;font-weight:700;line-height:.92;
+    font-size:clamp(3.1rem,7vw,5.8rem);letter-spacing:-1px;margin-bottom:14px;
+  }
+  .wordmark .bni{
+    color:#fff;
+    -webkit-text-stroke:0;
+  }
+  .wordmark .dot{
+    width:.16em;height:.16em;border-radius:50%;
+    background:var(--red);align-self:center;margin:0 .04em;
+    box-shadow:0 0 24px 2px rgba(207,46,46,.6);
+  }
+  .wordmark .united{
+    background:linear-gradient(135deg,var(--gold) 0%,#e7c878 55%,var(--gold) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    font-style:italic;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;font-weight:600;
+    font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.06;letter-spacing:-.3px;margin-bottom:24px;
+    color:rgba(255,255,255,.92);
+  }
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p.lede{font-size:1.12rem;color:rgba(255,255,255,.82);max-width:30rem;margin-bottom:36px}
+  .datechip{
+    display:flex;gap:20px;flex-wrap:wrap;margin-bottom:38px;
+  }
+  .datechip .item{
+    border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:14px 20px;
+    background:rgba(255,255,255,.04);
+  }
+  .datechip .item .k{font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+  .datechip .item .v{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600}
+  .hero-cta{
+    display:inline-flex;align-items:center;gap:12px;
+    background:linear-gradient(140deg,var(--red),var(--red-deep));
+    color:#fff;text-decoration:none;font-weight:600;letter-spacing:.4px;
+    padding:16px 30px;border-radius:10px;font-size:1rem;
+    box-shadow:0 18px 40px -16px rgba(207,46,46,.7);
+    transition:transform .22s ease,box-shadow .22s ease;
+  }
+  .hero-cta:hover{transform:translateY(-2px);box-shadow:0 24px 50px -16px rgba(207,46,46,.8)}
+  .hero-cta span.arr{transition:transform .22s ease}
+  .hero-cta:hover span.arr{transform:translateX(4px)}
+
+  /* form card */
+  .card{
+    background:var(--paper);color:var(--ink);
+    border-radius:18px;padding:36px 34px;box-shadow:var(--shadow);
+    border:1px solid rgba(255,255,255,.5);
+  }
+  .card h2{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;margin-bottom:6px}
+  .card .sub{font-size:.92rem;color:#516074;margin-bottom:24px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.78rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:#41526a;margin-bottom:7px}
+  .field input{
+    width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:10px;
+    font-family:'Sora',sans-serif;font-size:.96rem;color:var(--ink);background:#fff;
+    transition:border-color .18s ease,box-shadow .18s ease;
+  }
+  .field input:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 4px rgba(13,40,69,.1)}
+  .field.code input{letter-spacing:2px;font-weight:600;text-transform:uppercase}
+  .hint{font-size:.74rem;color:#7a8699;margin-top:5px}
+  .submit{
+    width:100%;margin-top:8px;border:none;cursor:pointer;
+    background:var(--navy);color:#fff;font-family:'Sora',sans-serif;font-weight:600;
+    font-size:1rem;letter-spacing:.4px;padding:15px;border-radius:10px;
+    transition:background .2s ease,transform .2s ease;
+  }
+  .submit:hover{background:var(--red);transform:translateY(-1px)}
+  .submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+  .formnote{font-size:.74rem;color:#7a8699;text-align:center;margin-top:14px}
+  .success{
+    display:none;text-align:center;padding:18px 0 6px;
+  }
+  .success.show{display:block}
+  .success .tick{
+    width:58px;height:58px;border-radius:50%;margin:0 auto 16px;
+    background:linear-gradient(140deg,#1f8a4c,#15703c);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:1.7rem;
+  }
+  .success h3{font-family:'Fraunces',serif;font-size:1.4rem;margin-bottom:8px}
+  .success p{color:#516074;font-size:.95rem;margin-bottom:18px}
+  .success button{
+    background:none;border:1.5px solid var(--line);padding:10px 20px;border-radius:8px;
+    font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;color:var(--navy);
+  }
+  .err{color:var(--red-deep);font-size:.78rem;margin-top:5px;display:none}
+  .err.show{display:block}
+
+  /* ---------- value strip ---------- */
+  .strip{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding:64px 28px}
+  .vcard .n{font-family:'Fraunces',serif;font-size:2.4rem;color:var(--red);font-weight:600;line-height:1}
+  .vcard h4{font-family:'Fraunces',serif;font-size:1.18rem;margin:14px 0 8px}
+  .vcard p{font-size:.93rem;color:#4d5d72}
+
+  /* ---------- details ---------- */
+  .details{padding:84px 0}
+  .details .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .sechead{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:600;letter-spacing:-.4px;margin-bottom:20px}
+  .details p{color:#4d5d72;margin-bottom:18px;font-size:1rem}
+  .agenda{list-style:none}
+  .agenda li{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .agenda li:last-child{border-bottom:none}
+  .agenda .t{font-family:'Fraunces',serif;font-weight:600;color:var(--navy);min-width:88px}
+  .agenda .d strong{display:block}
+  .agenda .d span{font-size:.9rem;color:#697789}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:48px 0;font-size:.88rem}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  footer .brand{color:#fff;font-size:1.1rem}
+  footer a{color:var(--gold);text-decoration:none}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:880px){
+    .hero .wrap,.details .wrap{grid-template-columns:1fr;gap:44px}
+    .strip .wrap{grid-template-columns:1fr;gap:34px}
+    .hero{padding:64px 0 80px}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="mark">B</span> BNI United</div>
+    <a href="#register" class="cta">Reserve a Seat</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Official Chapter Launch</span>
+      <div class="wordmark"><span class="bni">BNI</span><span class="dot"></span><span class="united">United</span></div>
+      <h1>The room where <em>referrals</em><br>become revenue.</h1>
+      <p class="lede">Join BNI United on launch day and step into a structured network of professionals built on one principle — Givers Gain®.</p>
+      <div class="datechip">
+        <div class="item"><div class="k">Date</div><div class="v">Thursday, July 9</div></div>
+        <div class="item"><div class="k">Year</div><div class="v">2026</div></div>
+        <div class="item"><div class="k">Time</div><div class="v">10:00 – 11:30 AM</div></div>
+      </div>
+      <a href="#register" class="hero-cta">Claim My Spot <span class="arr">→</span></a>
+    </div>
+
+    <div class="card" id="register">
+      <form id="formView" name="bni-launch" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="bni-launch">
+        <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <h2>Reserve your seat</h2>
+        <p class="sub">Founding members are limited. Add your reference code from your invitation email to lock in priority placement.</p>
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input id="name" name="name" type="text" placeholder="Jordan Avery" autocomplete="name">
+          <div class="err" data-for="name">Please enter your name.</div>
+        </div>
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email">
+          <div class="err" data-for="email">Please enter a valid email.</div>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" placeholder="(407) 555-0142" autocomplete="tel">
+          <div class="err" data-for="phone">Please enter your phone number.</div>
+        </div>
+        <div class="field">
+          <label for="biz">Business / Industry</label>
+          <input id="biz" name="business" type="text" placeholder="e.g. Commercial Real Estate">
+          <div class="err" data-for="biz">Please tell us your industry.</div>
+        </div>
+        <div class="field code">
+          <label for="code">Reference Code</label>
+          <input id="code" name="reference_code" type="text" placeholder="BNI-XXXX" maxlength="16">
+          <div class="hint">Found in your invitation email. Optional if you don't have one yet.</div>
+        </div>
+        <button type="submit" class="submit" id="submitBtn">Confirm Registration</button>
+        <p class="formnote">You'll receive a confirmation email with venue details.</p>
+      </form>
+
+      <div class="success" id="successView">
+        <div class="tick">✓</div>
+        <h3>You're on the list!</h3>
+        <p>We've saved your spot for the BNI United launch on July 9, 2026. Watch your inbox for confirmation and venue details.</p>
+        <button id="resetBtn">Register someone else</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <div class="vcard reveal"><div class="n">1</div><h4>One seat per profession</h4><p>Exclusive category protection means you're the only voice for your industry in the room.</p></div>
+    <div class="vcard reveal"><div class="n">52</div><h4>Weekly opportunities</h4><p>A full year of structured meetings designed to generate qualified, warm referrals.</p></div>
+    <div class="vcard reveal"><div class="n">∞</div><h4>Relationships that compound</h4><p>Build a personal sales team of professionals invested in your growth.</p></div>
+  </div>
+</section>
+
+<section class="details">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="sechead">Why launch day matters</h2>
+      <p>Launch day is when a chapter is born — and founding members get the first pick of open professional categories. Once a seat is filled, that category closes.</p>
+      <p>Arrive ready to introduce your business, meet the founding cohort, and understand how BNI's proven referral system turns relationships into measurable revenue.</p>
+      <p>Bring business cards, an appetite for connection, and the reference code from your invitation to secure priority placement.</p>
+    </div>
+    <div class="reveal">
+      <h2 class="sechead">Launch day agenda</h2>
+      <ul class="agenda">
+        <li><span class="t">10:00 AM</span><span class="d"><strong>Open Networking</strong><span>Coffee, introductions & founding member welcome.</span></span></li>
+        <li><span class="t">10:30 AM</span><span class="d"><strong>The BNI Method</strong><span>How the referral system works in practice.</span></span></li>
+        <li><span class="t">11:00 AM</span><span class="d"><strong>Member Introductions</strong><span>Your 60-second business overview.</span></span></li>
+        <li><span class="t">11:15 AM</span><span class="d"><strong>Category Confirmation</strong><span>Claim your exclusive professional seat.</span></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="mark" style="width:32px;height:32px;font-size:.9rem">B</span> BNI United</div>
+    <div>Launch Day · July 9, 2026 · Questions? <a href="#register">Reserve your seat</a></div>
+  </div>
+</footer>
+
+<script>
+  // ---- reveal on scroll ----
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.18});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ---- form handling ----
+  const $=id=>document.getElementById(id);
+  const form=$('formView');
+  const btn=$('submitBtn');
+  function showErr(field,on){
+    const e=document.querySelector('.err[data-for="'+field+'"]');
+    if(e)e.classList.toggle('show',on);
+  }
+  function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)}
+  const encode=data=>Object.keys(data).map(k=>encodeURIComponent(k)+'='+encodeURIComponent(data[k])).join('&');
+
+  form.addEventListener('submit', async (ev)=>{
+    ev.preventDefault();
+    const name=$('name').value.trim();
+    const email=$('email').value.trim();
+    const phone=$('phone').value.trim();
+    const biz=$('biz').value.trim();
+    const code=$('code').value.trim();
+
+    let ok=true;
+    showErr('name',!name); if(!name)ok=false;
+    showErr('email',!validEmail(email)); if(!validEmail(email))ok=false;
+    showErr('phone',!phone); if(!phone)ok=false;
+    showErr('biz',!biz); if(!biz)ok=false;
+    if(!ok)return;
+
+    btn.disabled=true; btn.textContent='Saving…';
+
+    try{
+      await fetch('/',{
+        method:'POST',
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:encode({
+          'form-name':'bni-launch',
+          name, email, phone,
+          business:biz,
+          reference_code:code
+        })
+      });
+    }catch(err){ console.error('submit error',err); }
+
+    form.style.display='none';
+    $('successView').classList.add('show');
+  });
+
+  $('resetBtn').addEventListener('click', ()=>{
+    ['name','email','phone','biz','code'].forEach(f=>$(f).value='');
+    $('successView').classList.remove('show');
+    form.style.display='block';
+    btn.disabled=false; btn.textContent='Confirm Registration';
+  });
+</script>
+</body>
+</html>
