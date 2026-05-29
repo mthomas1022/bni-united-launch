@@ -170,6 +170,7 @@
   }
   .err{color:var(--red-deep);font-size:.78rem;margin-top:5px;display:none}
   .err.show{display:block}
+  .recaptcha-wrap{margin:6px 0 14px;display:flex;justify-content:center}
 
   /* ---------- value strip ---------- */
   .strip{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -232,7 +233,7 @@
     </div>
 
     <div class="card" id="register">
-      <form id="formView" name="bni-launch" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <form id="formView" name="bni-launch" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="bni-launch">
         <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
         <h2>Reserve your seat</h2>
@@ -262,6 +263,7 @@
           <input id="code" name="reference_code" type="text" placeholder="BNI-XXXX" maxlength="16">
           <div class="hint">Found in your invitation email. Optional if you don't have one yet.</div>
         </div>
+        <div data-netlify-recaptcha="true" class="recaptcha-wrap"></div>
         <button type="submit" class="submit" id="submitBtn">Confirm Registration</button>
         <p class="formnote">You'll receive a confirmation email with venue details.</p>
       </form>
@@ -342,6 +344,14 @@
     showErr('biz',!biz); if(!biz)ok=false;
     if(!ok)return;
 
+    // reCAPTCHA — Netlify injects window.grecaptcha after script loads
+    let captchaToken='';
+    try{ captchaToken = (window.grecaptcha && window.grecaptcha.getResponse) ? window.grecaptcha.getResponse() : ''; }catch(e){}
+    if(!captchaToken){
+      alert('Please complete the reCAPTCHA before submitting.');
+      return;
+    }
+
     btn.disabled=true; btn.textContent='Saving…';
 
     try{
@@ -352,7 +362,8 @@
           'form-name':'bni-launch',
           name, email, phone,
           business:biz,
-          reference_code:code
+          reference_code:code,
+          'g-recaptcha-response':captchaToken
         })
       });
     }catch(err){ console.error('submit error',err); }
